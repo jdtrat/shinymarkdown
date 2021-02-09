@@ -16,3 +16,5 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1.9000
 Imports: 
     htmltools
+URL: https://github.com/jdtrat/shinymark
+BugReports: https://github.com/jdtrat/shinymark/issues
