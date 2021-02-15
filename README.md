@@ -10,7 +10,7 @@
 
 {shinymarkdown} packages JavaScript's [Toast UI](https://github.com/nhn/tui.editor) Markdown editor for use in Shiny.
 
-:bangbang: | **NOTE THAT THIS PACKAGE IS STILL UNDER ACTIVE DEVELOPMENT AND ITS API IS LIKELY TO CHANGE** |
+### :bangbang: | NOTE: THIS PACKAGE IS UNDER ACTIVE DEVELOPMENT AND ITS API IS LIKELY TO CHANGE |
 
 ## Table of contents
 
