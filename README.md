@@ -10,7 +10,7 @@
 
 {shinymarkdown} packages JavaScript's [Toast UI](https://github.com/nhn/tui.editor) Markdown editor for use in Shiny.
 
-### :bangbang: | NOTE: THIS PACKAGE IS UNDER ACTIVE DEVELOPMENT AND ITS API IS LIKELY TO CHANGE |
+### :bangbang: \| NOTE: THIS PACKAGE IS UNDER ACTIVE DEVELOPMENT AND ITS API IS LIKELY TO CHANGE \|
 
 ## Table of contents
 
@@ -31,7 +31,9 @@ devtools::install_github("jdtrat/shinymarkdown")
 
 ## Demos
 
-{shinymarkdown} is still under active development, and its API is likely to change. For now, the following will generate a simple Markdown editor within a Shiny app. Note it is best to use in your browser window (Google Chrome or Safari).
+{shinymarkdown} is still under active development, and its API is likely to change. It is best to use the editor in your browser window (Google Chrome or Safari).
+
+### Use the Editor
 
 ``` {.r}
 library(shiny)
@@ -42,6 +44,29 @@ ui <- fluidPage(
 )
 
 server <- function(input, output, session) {}
+
+shinyApp(ui, server)
+```
+
+### Access the Editor's Contents
+
+``` {.r}
+library(shiny)
+library(shinymarkdown)
+ui <- fluidPage(
+  use_shinymd(),
+  marker(),
+  actionButton("get_md", "Get Markdown"),
+  actionButton("get_html", "Get HTML")
+)
+
+server <- function(input, output, session) {
+  
+  observeEvent(input$get_md, {print(get_markdown())})
+  
+  observeEvent(input$get_html, {print(get_html())})
+  
+}
 
 shinyApp(ui, server)
 ```

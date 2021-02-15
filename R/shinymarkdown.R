@@ -40,3 +40,37 @@ marker <- function() {
 }
 
 
+
+#' Get the editor's markdown output
+#'
+#' @export
+#'
+get_markdown <- function() {
+
+  session <- shiny::getDefaultReactiveDomain()
+
+  session$sendCustomMessage(
+    "get_markdown",
+    list()
+  )
+
+  return(session$input$shinymd_markdown)
+
+}
+
+#' Get the editor's HTML output
+#'
+#' @export
+#'
+get_html <- function() {
+
+  session <- shiny::getDefaultReactiveDomain()
+
+  session$sendCustomMessage(
+    "get_html",
+    list()
+  )
+
+  return(session$input$shinymd_html)
+
+}

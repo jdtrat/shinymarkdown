@@ -4,10 +4,20 @@ $(document).ready( function () {
   /* Watch for Shiny sending message about wanting markdown */
   Shiny.addCustomMessageHandler("get_markdown", function (_) {
 
-    const my_current_md_txt = editor.getMarkdown();
+    const current_md = editor.getMarkdown();
 
     /* Send current text back to shiny */
-    Shiny.setInputValue("current_markdown", my_current_md_txt);
+    Shiny.setInputValue("shinymd_markdown", current_md);
+
+  });
+
+  /* Watch for Shiny sending message about wanting html */
+  Shiny.addCustomMessageHandler("get_html", function (_) {
+
+    const current_html = editor.getHtml();
+
+    /* Send current text back to shiny */
+    Shiny.setInputValue("shinymd_html", current_html);
 
   });
 
