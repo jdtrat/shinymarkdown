@@ -31,9 +31,11 @@ devtools::install_github("jdtrat/shinymarkdown")
 
 ## Demos
 
-{shinymarkdown} is still under active development, and its API is likely to change. It is best to use the editor in your browser window (Google Chrome or Safari).
+{shinymarkdown} is still under active development, and its API is likely to change. It is best to use the editor in your browser window (Google Chrome or Safari). Below is an example of {shinymarkdown} with the left panel as the Markdown Editor and the right panel as the (live) HTML preview.
 
-### Use the Editor
+<img src="https://jdtrat.com/packages/shinymarkdown/resources/editor_preview_dev.png" style="border:5px solid black;"/>
+
+### Using the Editor
 
 ``` {.r}
 library(shiny)
@@ -48,7 +50,7 @@ server <- function(input, output, session) {}
 shinyApp(ui, server)
 ```
 
-### Access the Editor's Contents
+### Accessing the Editor's Contents
 
 ``` {.r}
 library(shiny)
