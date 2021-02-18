@@ -22,7 +22,7 @@ init_editor(
 
 \item{preview_style}{The Markdown editor's preview style. Either "tab" or "vertical". Default is "tab".}
 
-\item{preview_highlight}{Should the Markdown Editor's HTML preview have a highlighted element corresponding to the cursor position in the Markdown editor. Default is FALSE. be highligh}
+\item{preview_highlight}{Should the Markdown Editor's HTML preview have a highlighted element corresponding to the cursor position in the Markdown editor. Default is FALSE.}
 
 \item{initial_edit_type}{Initial editor type: "markdown" or "wysiwyg". Default is "markdown".}
 
