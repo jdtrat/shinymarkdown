@@ -6,6 +6,9 @@
 \usage{
 get_markdown()
 }
+\value{
+A string containing the Markdown text entered into the editor.
+}
 \description{
 Get the editor's markdown output
 }

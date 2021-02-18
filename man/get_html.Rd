@@ -6,6 +6,9 @@
 \usage{
 get_html()
 }
+\value{
+A string containing the HTML code created from text entered into the Markdown editor.
+}
 \description{
 Get the editor's HTML output
 }
