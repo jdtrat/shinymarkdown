@@ -63,7 +63,7 @@ shinyApp(ui, server)
 |    `min_height`     |                           The editor's minimum height value (pixels). Default = '300px'. This is overwritten by the height parameter.                           |
 |      `height`       |                  The editor's height value, applied as a border-box. Example values include "300px", "100%", and "auto". Defaults to "500px".                   |
 |   `preview_style`   |                                       The Markdown editor's preview style. Either "tab" or "vertical". Default is "tab".                                        |
-| `preview_highlight` | Should the Markdown Editor's HTML preview have a highlighted element corresponding to the cursor position in the Markdown editor. Default is FALSE. be highligh |
+| `preview_highlight` | Should the Markdown Editor's HTML preview have a highlighted element corresponding to the cursor position in the Markdown editor. Default is FALSE. |
 | `initial_edit_type` |                                              Initial editor type: "markdown" or "wysiwyg". Default is "markdown".                                               |
 | `hide_mode_switch`  |                         Should the user be able to switch the editor mode from "wysiwyg" to "markdown" or vice versa? Default is TRUE.                          |
 |     `language`      |                                                         Editor language ISO code. Defaults to "en-us".                                                          |
