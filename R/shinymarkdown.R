@@ -23,36 +23,6 @@ use_shinymd <- function() {
   )
 }
 
-#' Initialize the editor
-#'
-#' @inheritParams marker
-#' @keywords internal
-#' @return A script defining how to initialize the editor based on user specifications.
-#'
-init_editor <- function(min_height, height, preview_style, preview_highlight, initial_edit_type, hide_mode_switch, language, initial_value) {
-
-  data <- list(match.call(),
-               min_height = min_height,
-               height = height,
-               preview_style = preview_style,
-               preview_highlight = base::tolower(preview_highlight),
-               initial_edit_type = initial_edit_type,
-               hide_mode_switch = base::tolower(hide_mode_switch),
-               language = language,
-               initial_value_lgl = ifelse(is.null(initial_value), FALSE, TRUE),
-               initial_value = initial_value
-  )
-
-  template <- readLines(system.file("assets/js/init-template.js", package = "shinymarkdown"))
-
-  shiny::tags$script(
-    shiny::HTML(
-      whisker::whisker.render(template = template,
-                              data = data)
-    )
-  )
-}
-
 #' Add an editor instance
 #'
 #' Create the markdown editor
@@ -71,21 +41,30 @@ init_editor <- function(min_height, height, preview_style, preview_highlight, in
 #'
 marker <- function(min_height = "300px", height = "500px", preview_style = "tab", preview_highlight = FALSE, initial_edit_type = "markdown", hide_mode_switch = TRUE, language = "en-us", initial_value = NULL) {
 
+  data <- list(min_height = min_height,
+               height = height,
+               preview_style = preview_style,
+               preview_highlight = base::tolower(preview_highlight),
+               initial_edit_type = initial_edit_type,
+               hide_mode_switch = base::tolower(hide_mode_switch),
+               language = language,
+               initial_value_lgl = ifelse(is.null(initial_value), FALSE, TRUE),
+               initial_value = initial_value
+  )
+
+  template <- readLines(system.file("assets/js/init-template.js", package = "shinymarkdown"))
+
   shiny::tagList(
-  init_editor(min_height = min_height,
-              height = height,
-              preview_style = preview_style,
-              preview_highlight = preview_highlight,
-              initial_edit_type = initial_edit_type,
-              hide_mode_switch = hide_mode_switch,
-              language = language,
-              initial_value = initial_value),
+  shiny::tags$script(
+    shiny::HTML(
+      whisker::whisker.render(template = template,
+                              data = data)
+    )
+  ),
   shiny::div(id = "editor")
   )
 
 }
-
-
 
 #' Get the editor's markdown output
 #'
