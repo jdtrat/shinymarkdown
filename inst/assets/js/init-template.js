@@ -11,7 +11,7 @@ const editor = new Editor({
   initialEditType: '{{initial_edit_type}}',
   hideModeSwitch: {{hide_mode_switch}},
   language: '{{language}}'{{#initial_value_lgl}},
-  initialValue: '{{initial_value}}',
+  initialValue: `{{initial_value}}`,
   {{ /initial_value_lgl }}
 });
 
