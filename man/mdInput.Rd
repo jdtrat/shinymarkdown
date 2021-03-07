@@ -41,6 +41,18 @@ An instance of the markdown editor for use within a Shiny App.
 \description{
 Create an instance of a Markdown editor for text that may require formatting.
 }
+\section{Server value}{
+
+
+A character string of the text input in two formats:
+\itemize{
+\item Markdown, which may be accessed using the inputId with "_markdown" as a suffix.
+\item HTML, which may be accessed using the inputId with "_html" as a suffix.
+}
+
+See the examples section for more an example.
+}
+
 \examples{
 
 if(interactive()) {

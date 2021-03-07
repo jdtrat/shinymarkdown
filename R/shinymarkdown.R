@@ -14,7 +14,7 @@
 #'
 #' @return An instance of the markdown editor for use within a Shiny App.
 #'
-#' @section Server value
+#' @section Server value:
 #'
 #' A character string of the text input in two formats:
 #' * Markdown, which may be accessed using the inputId with "_markdown" as a suffix.
