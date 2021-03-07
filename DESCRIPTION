@@ -30,7 +30,8 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1.9000
 Imports: 
     shiny,
-    whisker
+    whisker,
+    htmltools
 URL: https://github.com/jdtrat/shinymarkdown
 BugReports: https://github.com/jdtrat/shinymarkdown/issues
 License: MIT + file LICENSE

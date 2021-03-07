@@ -35,18 +35,15 @@ devtools::install_github("jdtrat/shinymarkdown")
 
 <img src="https://jdtrat.com/packages/shinymarkdown/resources/editor_preview_dev.png" style="border:5px solid black;"/>
 
-### Using the Editor
+### Basic Usage
 
-#### Basic Usage
-
-If you just want to plop in an editor, the following code will work! For customizing the appearance/functionality of the Editor, please see the [advanced usage](#advanced-usage) section below or the documentation for the `marker()` function.
+If you just want to plop in an editor, the following code will work! For customizing the appearance/functionality of the Editor, please see the [advanced usage](#advanced-usage) section below or the documentation for the `mdInput()` function.
 
 ``` {.r}
 library(shiny)
 library(shinymarkdown)
 ui <- fluidPage(
-  use_shinymd(),
-  marker()
+  mdInput(inputId = "editor1")
 )
 
 server <- function(input, output, session) {}
@@ -54,7 +51,33 @@ server <- function(input, output, session) {}
 shinyApp(ui, server)
 ```
 
-#### Advanced Usage
+### Accessing the Editor's Contents
+
+`mdInput()` is not *exactly* a typical Shiny input. Because we wanted to enable access to both the Markdown and HTML formats of user-input, we forwent the traditional Shiny input-binding. Instead, you can access either the Markdown or HTML versions of the editor's contents by suffixing the `inputId` with "_markdown" or "_html", respectively. For example:
+
+``` {.r}
+library(shiny)
+library(shinymarkdown)
+ui <- fluidPage(
+  mdInput(inputId = "editor1", height = "300px", hide_mode_switch = F)
+)
+
+server <- function(input, output, session) {
+  
+  # Print the Markdown
+  observe({print(input$editor1_markdown)})
+  
+  # Print the HTML
+  observe({print(input$editor1_html)})
+  
+}
+
+shinyApp(ui, server)
+```
+
+### Additional Features
+
+#### Editor Customization
 
 {shinymarkdown} provides different arguments for customizing the Markdown editor's appearance and functionality. The following options, accessible through `?marker()` are provided:
 
@@ -69,28 +92,42 @@ shinyApp(ui, server)
 |     `language`      |                                                         Editor language ISO code. Defaults to "en-us".                                                          |
 |   `iniial_value`    |                                 Should the editor have text already present? If so, supply a character string. Default is NULL.                                 |
 
-### Accessing the Editor's Contents
+#### Showing and Hiding the Editor
 
-``` {.r}
+If you wish to show or hide the editor within your application, you can call the functions `show_editor()` and `hide_editor()`, respectively. They each take the an argument corresponding to the `inputId` of the editor you wish to show/hide. For example, if you have two editors in the same application:
+
+```{.r}
 library(shiny)
 library(shinymarkdown)
+
 ui <- fluidPage(
-  use_shinymd(),
-  marker(),
-  actionButton("get_md", "Get Markdown"),
-  actionButton("get_html", "Get HTML")
+  mdInput(inputId = "editor1", height = "300px", hide_mode_switch = F),
+  mdInput(inputId = "editor2", height = "300px", hide_mode_switch = F),
+  actionButton("hide1", "Hide the First Editor"),
+  actionButton("show1", "Show the First Editor"),
+  actionButton("hide2", "Hide the Second Editor"),
+  actionButton("show2", "Show the Second Editor")
 )
 
 server <- function(input, output, session) {
   
-  observeEvent(input$get_md, {print(get_markdown())})
+  # hide the first editor
+  observeEvent(input$hide1, {hide_editor(.id = "editor1")})
   
-  observeEvent(input$get_html, {print(get_html())})
+  # show the first editor
+  observeEvent(input$show1, {show_editor(.id = "editor1")})
+  
+  # hide the second editor
+  observeEvent(input$hide2, {hide_editor(.id = "editor2")})
+  
+  # show the second editor
+  observeEvent(input$show2, {show_editor(.id = "editor2")})
   
 }
 
 shinyApp(ui, server)
 ```
+
 
 ## Feedback
 

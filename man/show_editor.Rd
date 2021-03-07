@@ -4,11 +4,38 @@
 \alias{show_editor}
 \title{Show the editor}
 \usage{
-show_editor()
+show_editor(.id)
+}
+\arguments{
+\item{.id}{The \code{inputId} of the editor.}
 }
 \value{
-NA; used for side effects to show the editor.
+NA; used for side effects to show the editor instance defined with \code{\link{mdInput}}.
 }
 \description{
 Show the editor
+}
+\examples{
+if(interactive()) {
+
+library(shiny)
+library(shinymarkdown)
+ui <- fluidPage(
+mdInput(inputId = "myEditor", height = "500px", hide_mode_switch = F)
+)
+
+server <- function(input, output, session) {
+
+# Hide the editor
+observeEvent(input$hide, {hide_ediotr(.id = "myEditor")})
+
+# Show the editor
+obseveEvent(input$show, {show_editor(.id = "myEditor")})
+
+}
+
+shinyApp(ui, server)
+
+}
+
 }
