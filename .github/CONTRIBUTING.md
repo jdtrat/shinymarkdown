@@ -1,6 +1,6 @@
-# Contributing to shinysurveys
+# Contributing to shinymarkdown
 
-Howdy :wave:! Thanks for your interest in making {shinysurveys} better! The guidelines below outline how to propose a change to shinysurveys. They are based on (i.e. the same as) the `tidyverse` contribution guidelines. If you have any additional questions, please [open an issue](https://github.com/jdtrat/shinysurveys/issues) or send me a [message on Twitter](https://twitter.com/jdtrat).
+Howdy :wave:! Thanks for your interest in making {shinymarkdown} better! The guidelines below outline how to propose a change to shinymarkdown. They are based on (i.e. the same as) the `tidyverse` contribution guidelines. If you have any additional questions, please [open an issue](https://github.com/jdtrat/shinymarkdown/issues) or send me a [message on Twitter](https://twitter.com/jdtrat).
 
 ## Fixing typos
 
@@ -8,11 +8,11 @@ You can fix typos, spelling mistakes, or grammatical errors in the documentation
 
 ## Bigger changes
 
-If you want to make a bigger change, it's a good idea to first file an [issue](https://github.com/jdtrat/shinysurveys/issues). If you've found a bug, please file an issue that illustrates the bug with a minimal [reprex](https://reprex.tidyverse.org) (this will also help you write a unit test, if needed).
+If you want to make a bigger change, it's a good idea to first file an [issue](https://github.com/jdtrat/shinymarkdown/issues). If you've found a bug, please file an issue that illustrates the bug with a minimal [reprex](https://reprex.tidyverse.org) (this will also help you write a unit test, if needed).
 
 ### Pull request process
 
--   Fork the package and clone onto your computer. If you haven't done this before, we recommend using `usethis::create_from_github("jdtrat/shinysurveys", fork = TRUE)`.
+-   Fork the package and clone onto your computer. If you haven't done this before, we recommend using `usethis::create_from_github("jdtrat/shinymarkdown", fork = TRUE)`.
 
 -   Install all development dependencies with `devtools::install_dev_deps()`, and then make sure the package passes R CMD check by running `devtools::check()`. If R CMD check doesn't pass cleanly, it's a good idea to ask for help before continuing.
 
@@ -32,4 +32,4 @@ If you want to make a bigger change, it's a good idea to first file an [issue](h
 
 ## Code of Conduct
 
-Please note that the shinysurveys project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project you agree to abide by its terms.
+Please note that the shinymarkdown project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project you agree to abide by its terms.

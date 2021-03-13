@@ -1,4 +1,4 @@
-# shinysurveys
+# shinymarkdown
 
 #### Use a WYSIWYG Markdown Editor in Shiny
 
