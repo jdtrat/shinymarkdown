@@ -66,24 +66,24 @@ mdInput <- function(inputId, min_height = "300px", height = "500px", preview_sty
 
   shiny::tagList(
     htmltools::htmlDependency(
-        name = "mdInput",
-        version = utils::packageVersion("shinymarkdown"),
-        package = "shinymarkdown",
-        src = "assets",
-        script = c("js/shinymarkdown-handlers.js"),
-        stylesheet = c("css/codemirror.min.css", "css/toastui-editor.min.css")
-      ),
-    shiny::includeScript(system.file("assets/js/toastui-editor-all.min.js", package = "shinymarkdown")),
-    shiny::tags$script(
-      shiny::HTML(
-        whisker::whisker.render(template = template,
-                                data = data)
-      )
+      name = "mdInput",
+      version = utils::packageVersion("shinymarkdown"),
+      package = "shinymarkdown",
+      src = "assets",
+      script = c("js/shinymarkdown-handlers.js"),
+      stylesheet = c("css/codemirror.min.css", "css/toastui-editor.min.css")
     ),
     shiny::div(class = "md-editor",
+               shiny::includeScript(system.file("assets/js/toastui-editor-all.min.js", package = "shinymarkdown")),
+               shiny::tags$script(
+                 shiny::HTML(
+                   whisker::whisker.render(template = template,
+                                           data = data)
+                 )
+               ),
                shiny::div(id = paste0(inputId, "_editor")
-                          )
                )
+    )
   )
 
 }
