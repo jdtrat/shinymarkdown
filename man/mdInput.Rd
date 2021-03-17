@@ -6,6 +6,7 @@
 \usage{
 mdInput(
   inputId,
+  refresh_rate = 1000,
   min_height = "300px",
   height = "500px",
   preview_style = "tab",
@@ -19,21 +20,33 @@ mdInput(
 \arguments{
 \item{inputId}{The \code{input} prefix used to access the value.}
 
-\item{min_height}{The editor's miniminum height value (pixels). Default = '300px'. Overwritten by the height parameter.}
+\item{refresh_rate}{The rate (ms) to send the editor's contents to Shiny.
+Default is 1000ms. If \code{refresh = "manual"}, the editor will have a
+button to manually send the editor's contents to Shiny.}
 
-\item{height}{The editor's height value, applied as a border-box. Example values include "300px", "100\%", and "auto". Defaults to "500px".}
+\item{min_height}{The editor's miniminum height value (pixels). Default =
+'300px'. Overwritten by the height parameter.}
 
-\item{preview_style}{The Markdown editor's preview style. Either "tab" or "vertical". Default is "tab".}
+\item{height}{The editor's height value, applied as a border-box. Example
+values include "300px", "100\%", and "auto". Defaults to "500px".}
 
-\item{preview_highlight}{Should the Markdown Editor's HTML preview have a highlighted element corresponding to the cursor position in the Markdown editor. Default is FALSE.}
+\item{preview_style}{The Markdown editor's preview style. Either "tab" or
+"vertical". Default is "tab".}
 
-\item{initial_edit_type}{Initial editor type: "markdown" or "wysiwyg". Default is "markdown".}
+\item{preview_highlight}{Should the Markdown Editor's HTML preview have a
+highlighted element corresponding to the cursor position in the Markdown
+editor. Default is FALSE.}
 
-\item{hide_mode_switch}{Should the user be able to switch the editor mode from "wysiwyg" to "markdown" or vice versa? Default is TRUE.}
+\item{initial_edit_type}{Initial editor type: "markdown" or "wysiwyg".
+Default is "markdown".}
+
+\item{hide_mode_switch}{Should the user be able to switch the editor mode
+from "wysiwyg" to "markdown" or vice versa? Default is TRUE.}
 
 \item{language}{Editor language ISO code. Defaults to "en-us".}
 
-\item{initial_value}{Should the editor have text already present? If so, supply a character string. Default is NULL.}
+\item{initial_value}{Should the editor have text already present? If so,
+supply a character string. Default is NULL.}
 }
 \value{
 An instance of the markdown editor for use within a Shiny App.
