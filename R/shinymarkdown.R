@@ -3,14 +3,25 @@
 #' Create an instance of a Markdown editor for text that may require formatting.
 #'
 #' @param inputId The \code{input} prefix used to access the value.
-#' @param min_height The editor's miniminum height value (pixels). Default = '300px'. Overwritten by the height parameter.
-#' @param height The editor's height value, applied as a border-box. Example values include "300px", "100%", and "auto". Defaults to "500px".
-#' @param preview_style The Markdown editor's preview style. Either "tab" or "vertical". Default is "tab".
-#' @param preview_highlight Should the Markdown Editor's HTML preview have a highlighted element corresponding to the cursor position in the Markdown editor. Default is FALSE.
-#' @param initial_edit_type Initial editor type: "markdown" or "wysiwyg". Default is "markdown".
-#' @param hide_mode_switch Should the user be able to switch the editor mode from "wysiwyg" to "markdown" or vice versa? Default is TRUE.
+#' @param refresh_rate The rate (ms) to send the editor's contents to Shiny.
+#'   Default is 1000ms. If \code{refresh = "manual"}, the editor will have a
+#'   button to manually send the editor's contents to Shiny.
+#' @param min_height The editor's miniminum height value (pixels). Default =
+#'   '300px'. Overwritten by the height parameter.
+#' @param height The editor's height value, applied as a border-box. Example
+#'   values include "300px", "100%", and "auto". Defaults to "500px".
+#' @param preview_style The Markdown editor's preview style. Either "tab" or
+#'   "vertical". Default is "tab".
+#' @param preview_highlight Should the Markdown Editor's HTML preview have a
+#'   highlighted element corresponding to the cursor position in the Markdown
+#'   editor. Default is FALSE.
+#' @param initial_edit_type Initial editor type: "markdown" or "wysiwyg".
+#'   Default is "markdown".
+#' @param hide_mode_switch Should the user be able to switch the editor mode
+#'   from "wysiwyg" to "markdown" or vice versa? Default is TRUE.
 #' @param language Editor language ISO code. Defaults to "en-us".
-#' @param initial_value Should the editor have text already present? If so, supply a character string. Default is NULL.
+#' @param initial_value Should the editor have text already present? If so,
+#'   supply a character string. Default is NULL.
 #'
 #' @return An instance of the markdown editor for use within a Shiny App.
 #'
@@ -48,7 +59,12 @@
 #'
 #' }
 #'
-mdInput <- function(inputId, min_height = "300px", height = "500px", preview_style = "tab", preview_highlight = FALSE, initial_edit_type = "markdown", hide_mode_switch = TRUE, language = "en-us", initial_value = NULL) {
+mdInput <- function(inputId, refresh_rate = 1000, min_height = "300px", height = "500px", preview_style = "tab", preview_highlight = FALSE, initial_edit_type = "markdown", hide_mode_switch = TRUE, language = "en-us", initial_value = NULL) {
+
+  # Ensure correct spelling of manual if refresh_rate is non-numeric
+  if (!is.numeric(refresh_rate) && !grepl("\\bmanual\\b", refresh_rate)) {
+    stop("`refresh_rate` is not recognized. Please check your spelling and try again.")
+  }
 
   data <- list(inputId = inputId,
                min_height = min_height,
@@ -59,7 +75,10 @@ mdInput <- function(inputId, min_height = "300px", height = "500px", preview_sty
                hide_mode_switch = base::tolower(hide_mode_switch),
                language = language,
                initial_value_lgl = ifelse(is.null(initial_value), FALSE, TRUE),
-               initial_value = initial_value
+               initial_value = initial_value,
+               manual_lgl = ifelse(refresh_rate == "manual", TRUE, FALSE),
+               auto_lgl = ifelse(refresh_rate != "manual", TRUE, FALSE),
+               refresh_rate = refresh_rate
   )
 
   template <- readLines(system.file("assets/js/init-template.js", package = "shinymarkdown"))
